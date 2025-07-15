@@ -1,0 +1,10 @@
+!pip install transformers
+from transformers import pipeline
+summarizer = pipeline("summarization")
+blog_text = """
+Productivity is not about doing more. It’s about doing what matters most. Many people confuse busyness with productivity, but the key lies in focus...
+"""
+
+
+summary = summarizer(blog_text, max_length=150, min_length=40, do_sample=False)
+print("💡 Summary:\n", summary[0]['summary_text'])
